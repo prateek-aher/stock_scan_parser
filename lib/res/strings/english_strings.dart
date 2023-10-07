@@ -59,5 +59,8 @@ class EnglishStrings extends Strings {
   String get textNoAuthor => "Unknown";
 
   @override
+  String get setParameters => "Set Parameters ";
+
+  @override
   String get list => "All ";
 }

@@ -4,6 +4,8 @@ import 'package:stock_scan_parser/bloc/stocks_bloc.dart';
 import 'package:stock_scan_parser/data/model/stocks_list.dart';
 import 'package:stock_scan_parser/ui/stock_detail_screen.dart';
 import 'package:stock_scan_parser/ui/stock_list_screen.dart';
+import 'package:stock_scan_parser/ui/variables/variable_indicator_screen.dart';
+import 'package:stock_scan_parser/ui/variables/variable_values_screen.dart';
 
 class RouteGenerator {
   Route<dynamic> generateRoute(RouteSettings settings) {
@@ -23,6 +25,17 @@ class RouteGenerator {
           builder: (context) {
             return StockDetailsScreen(stockData: args as Stock);
           },
+        );
+      case VariableValuesScreen.id:
+        return MaterialPageRoute(
+          builder: (context) {
+            return VariableValuesScreen(values: args as List<num>);
+          },
+        );
+      case VariableIndicatorScreen.id:
+        return MaterialPageRoute(
+          builder: (context) =>
+              VariableIndicatorScreen(variable: args as Variable),
         );
       default:
         return MaterialPageRoute(

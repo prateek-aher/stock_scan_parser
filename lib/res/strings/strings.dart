@@ -1,4 +1,5 @@
 abstract class Strings {
+  String get setParameters;
   String get homeTitle;
   String get list;
   String get stocksDetails;

@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:stock_scan_parser/data/model/stocks_list.dart';
 import 'package:stock_scan_parser/res/app_context_extension.dart';
+import 'package:stock_scan_parser/ui/variables/variable_indicator_screen.dart';
+import 'package:stock_scan_parser/ui/variables/variable_values_screen.dart';
 
 import 'widget/app_widgets.dart';
 
@@ -42,7 +44,12 @@ class StockDetailsScreen extends StatelessWidget {
                             VariableType.value) {
                           return InkWell(
                             onTap: () {
-                              //TODO: Ridirect to values screen to display values in decresing order
+                              Navigator.pushNamed(
+                                  context, VariableValuesScreen.id,
+                                  arguments: criterion.variable?[word]?.values
+                                          ?.toSet()
+                                          .toList() ??
+                                      <num>[]);
                             },
                             child: Text(
                               "${(criterion.variable?[word]?.values?.isNotEmpty ?? false) ? "(${criterion.variable?[word]?.values?.first.toString() ?? ""})" : word} ",
@@ -54,7 +61,9 @@ class StockDetailsScreen extends StatelessWidget {
                         }
                         return InkWell(
                           onTap: () {
-                            //TODO: Ridirect to set parameter screen to display to input parameter value
+                            Navigator.pushNamed(
+                                context, VariableIndicatorScreen.id,
+                                arguments: criterion.variable?[word]);
                           },
                           child: Text(
                             "(${(criterion.variable?[word]?.defaultValue)}) ",
